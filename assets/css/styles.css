@@ -3022,7 +3022,7 @@ rs-module-wrap {
 
 @media (max-width: 480px) {
     .hero-carousel{
-        min-height: 39vh;
+        min-height: 50vh;
     }
     .herodynamic{
         margin-top: 0px;
