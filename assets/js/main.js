@@ -114,7 +114,7 @@ function setREVStartSize(e) {
   const dots = document.querySelectorAll('.carousel-dots .dot');
   
   let currentProductIndex = 0;
-  const cardsPerView = window.innerWidth > 768 ? 3 : 1;
+  const cardsPerView = window.innerWidth > 768 ? 4 : 1;
   
   if (productsCarousel && productCards.length > 0) {
     function updateProductsCarousel() {
@@ -130,14 +130,24 @@ function setREVStartSize(e) {
     
     if (prevBtn) {
       prevBtn.addEventListener('click', () => {
-        currentProductIndex = Math.max(0, currentProductIndex - 1);
+        if (productCards.length <= cardsPerView) {
+          // If all products fit, cycle through them
+          currentProductIndex = (currentProductIndex - 1 + productCards.length) % productCards.length;
+        } else {
+          currentProductIndex = Math.max(0, currentProductIndex - 1);
+        }
         updateProductsCarousel();
       });
     }
     
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
-        currentProductIndex = Math.min(productCards.length - cardsPerView, currentProductIndex + 1);
+        if (productCards.length <= cardsPerView) {
+          // If all products fit, cycle through them
+          currentProductIndex = (currentProductIndex + 1) % productCards.length;
+        } else {
+          currentProductIndex = Math.min(productCards.length - cardsPerView, currentProductIndex + 1);
+        }
         updateProductsCarousel();
       });
     }
@@ -152,10 +162,15 @@ function setREVStartSize(e) {
     
     // Auto-play carousel
     setInterval(() => {
-      if (currentProductIndex < productCards.length - cardsPerView) {
-        currentProductIndex++;
+      if (productCards.length <= cardsPerView) {
+        // If all products fit, cycle through them
+        currentProductIndex = (currentProductIndex + 1) % productCards.length;
       } else {
-        currentProductIndex = 0;
+        if (currentProductIndex < productCards.length - cardsPerView) {
+          currentProductIndex++;
+        } else {
+          currentProductIndex = 0;
+        }
       }
       updateProductsCarousel();
     }, 5000);
@@ -490,9 +505,7 @@ function setREVStartSize(e) {
     
     modalContent.innerHTML = `
       <div class="product-modal-content">
-        <div class="product-modal-image">
-          <img src="../DCC STATIONRY.png" alt="${product.title}" />
-        </div>
+       
         <div class="product-modal-details">
           <h3>${product.title}</h3>
           <p>${product.description}</p>
