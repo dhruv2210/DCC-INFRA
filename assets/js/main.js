@@ -466,8 +466,8 @@ function setREVStartSize(e) {
         'Qualitative material'
       ],
       specifications: {
-        'Beams': '8×8 inches (200mm x 200mm), PCC steel with 4 mm and per beams 8 pieces',
-        'Plank': 'Length 7 feet, Height 1 feet, Width 2 inches (65mm), PCC steel with 4 mm and per sheet 4 pieces'
+        'Beams': '6x6 (150 mm x 150 mm), PCC steel with 3 mm and per beams 7 pieces',
+        'Plank': '6 feet length, Height 1 feet, Width 2 inches (50mm), PCC steel with 3 mm and per sheet 3 pieces'
       }
     },
     'compound-wall': {
@@ -486,8 +486,8 @@ function setREVStartSize(e) {
         'Space saving – JUST 1½" thick – Equally Strong'
       ],
       specifications: {
-        'Height options': '4ft, 6ft, 8ft, and 10ft',
-        'Beam height': '6ft, 8ft, and 10ft',
+        'Height options': '6ft, 7ft, 8ft, 9ft and 10ft',
+        'Beam height': '8ft, 9ft, 10ft, 11ft and 12ft',
         'Material': 'RCC with Steel reinforcement',
         'Installation': 'Single day completion'
       }
